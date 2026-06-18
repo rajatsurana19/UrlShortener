@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const insightsLink = document.getElementById('insightsLink');
     const navLinks = document.getElementById('navLinks');
 
+    // URL Validation Regex
+    const URL_REGEX = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*/;
+
     // Check auth status to update navbar
     fetch('/api/user/links').then(res => {
         if (res.ok) {
@@ -14,13 +17,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 <a href="/dashboard">Dashboard</a>
                 <a href="/logout" class="login-btn">Logout</a>
             `;
+        } else {
+            navLinks.innerHTML = `
+                <a href="/login" class="login-btn">Login</a>
+                <a href="/register" class="signup-btn">Sign Up</a>
+            `;
         }
-    }).catch(() => {});
+    }).catch(() => {
+        // Fallback for network errors
+        navLinks.innerHTML = `
+            <a href="/login" class="login-btn">Login</a>
+            <a href="/register" class="signup-btn">Sign Up</a>
+        `;
+    });
 
     if (shortenBtn) {
         shortenBtn.addEventListener('click', async () => {
-            const url = urlInput.value;
+            const url = urlInput.value.trim();
+            
+            // Frontend Validation
             if (!url) return alert('Please enter a URL');
+            if (!URL_REGEX.test(url)) {
+                return alert('Please enter a valid URL (e.g., https://google.com)');
+            }
 
             try {
                 const response = await fetch('/api/shorten', {
@@ -46,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (error) {
                 console.error('Fetch error:', error);
-                alert('Something went wrong! Check if you are logged in.');
+                alert('Something went wrong! Please check your connection.');
             }
         });
     }

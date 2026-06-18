@@ -10,24 +10,32 @@
 </head>
 <body class="auth-page">
     <div class="auth-container">
-        <a href="/" class="logo auth-logo">
+        <a href="/" class="logo auth-logo" style="margin-bottom: 3rem; font-size: 2.5rem;">
             <span class="logo-u">U</span><span class="logo-s">S</span>
         </a>
-        <div class="auth-card">
-            <h2>Welcome back</h2>
-            <p>Enter your details to manage your links.</p>
+        <div class="auth-card" style="border: 1px solid #f1f5f9; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);">
+            <h2 style="margin-bottom: 0.5rem; letter-spacing: -1px;">Welcome back</h2>
+            <p style="margin-bottom: 2.5rem; font-size: 1.1rem;">Sign in to your account to continue.</p>
+            
             <form action="/login" method="POST">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required placeholder="Enter username">
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label style="font-weight: 700; margin-bottom: 0.75rem; display: block; color: #1e293b;">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="name@example.com" style="width:100%; padding: 1rem; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-size: 1rem;">
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="••••••••">
+                <div class="form-group" style="margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <label style="font-weight: 700; color: #1e293b;">Password</label>
+                    </div>
+                    <input type="password" id="password" name="password" required placeholder="••••••••" style="width:100%; padding: 1rem; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; font-size: 1rem;">
                 </div>
-                <button type="submit" class="auth-btn">Sign In</button>
+                <button type="submit" class="auth-btn" style="width: 100%; padding: 1.15rem; background: #000; color: #fff; border: none; border-radius: 12px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.2s;">
+                    Sign in to Account
+                </button>
             </form>
-            <p class="auth-footer">New here? <a href="/register">Create an account</a></p>
+            
+            <div style="margin-top: 2rem; text-align: center; border-top: 1px solid #f1f5f9; padding-top: 2rem;">
+                <p style="color: #64748b;">Don't have an account? <a href="/register" style="color: #2563eb; font-weight: 700; text-decoration: none;">Create one for free</a></p>
+            </div>
         </div>
     </div>
 </body>
