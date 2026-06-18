@@ -13,6 +13,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.http.HttpStatus;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -25,9 +29,15 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/index.html", "/css/**", "/js/**", "/favicon.png", "/{shortCode:[a-zA-Z0-9]{6}}").permitAll()
+                .requestMatchers("/", "/index", "/css/**", "/js/**", "/favicon.png", "/{shortCode:[a-zA-Z0-9]{6}}", "/insights").permitAll()
                 .requestMatchers("/register", "/login").permitAll()
                 .anyRequest().authenticated()
+            )
+            .exceptionHandling(ex -> ex
+                .defaultAuthenticationEntryPointFor(
+                    new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED),
+                    new AntPathRequestMatcher("/api/**")
+                )
             )
             .formLogin(form -> form
                 .loginPage("/login")

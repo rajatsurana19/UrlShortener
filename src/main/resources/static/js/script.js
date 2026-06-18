@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('/api/user/links').then(res => {
         if (res.ok) {
             navLinks.innerHTML = `
-                <a href="/dashboard.html">Dashboard</a>
+                <a href="/dashboard">Dashboard</a>
                 <a href="/logout" class="login-btn">Logout</a>
             `;
         }
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const code = await response.text();
                     const fullShortUrl = `${window.location.origin}/${code}`;
                     shortenedUrl.value = fullShortUrl;
-                    insightsLink.href = `/insights.html?code=${code}`;
+                    insightsLink.href = `/insights?code=${code}`;
                     resultBox.classList.remove('hidden');
                     resultBox.scrollIntoView({ behavior: 'smooth' });
                 } else if (response.status === 403 || response.status === 401) {

@@ -80,7 +80,7 @@
                             <td class="trunc-url">${link.mainUrl}</td>
                             <td><span class="click-badge">${link.clickCount}</span></td>
                             <td>${new Date(link.createdAt).toLocaleDateString()}</td>
-                            <td><a href="/insights.html?code=${link.shortCode}" class="view-btn">View Stats</a></td>
+                            <td><a href="/insights?code=${link.shortCode}" class="view-btn">View Stats</a></td>
                         `;
                         body.appendChild(row);
                     });

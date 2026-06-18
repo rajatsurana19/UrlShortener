@@ -26,6 +26,11 @@ public class AuthController {
         return "dashboard";
     }
 
+    @GetMapping("/insights")
+    public String insights() {
+        return "insights";
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login";
