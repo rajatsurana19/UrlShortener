@@ -1,5 +1,8 @@
 package com.url.shortener.service;
 
+import com.url.shortener.UrlshortenerApplication;
+import com.url.shortener.entity.UrlEntity;
+import com.url.shortener.repository.UrlRepository;
 import com.url.shortener.util.UrlUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UrlService {
 
+    private final UrlRepository urlRepository;
     private final UrlUtils urlUtils;
 
     public String shortenUrl(String url){
@@ -18,12 +22,17 @@ public class UrlService {
 
         }
         // generate short url
-        String shortenCode = "TODO";
+        String shortCode = "TODO";
         // save to database
+        UrlEntity urlEntity = new UrlEntity();
+        urlEntity.setMainUrl(url);
+        urlEntity.setShortCode(shortCode);
+
+        urlRepository.save(urlEntity);
 
         // return short url
 
-        return null;
+        return shortCode;
     }
 
 
