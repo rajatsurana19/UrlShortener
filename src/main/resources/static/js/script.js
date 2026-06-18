@@ -5,6 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const shortenedUrl = document.getElementById('shortenedUrl');
     const copyBtn = document.getElementById('copyBtn');
     const insightsLink = document.getElementById('insightsLink');
+    const navLinks = document.getElementById('navLinks');
+
+    // Check auth status to update navbar
+    fetch('/api/user/links').then(res => {
+        if (res.ok) {
+            navLinks.innerHTML = `
+                <a href="/dashboard.html">Dashboard</a>
+                <a href="/logout" class="login-btn">Logout</a>
+            `;
+        }
+    }).catch(() => {});
 
     if (shortenBtn) {
         shortenBtn.addEventListener('click', async () => {
@@ -24,13 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     shortenedUrl.value = fullShortUrl;
                     insightsLink.href = `/insights.html?code=${code}`;
                     resultBox.classList.remove('hidden');
+                    resultBox.scrollIntoView({ behavior: 'smooth' });
+                } else if (response.status === 403 || response.status === 401) {
+                    if (confirm('Authentication required. Would you like to login to shorten this URL?')) {
+                        window.location.href = '/login';
+                    }
                 } else {
                     const err = await response.text();
                     alert('Error: ' + err);
                 }
             } catch (error) {
                 console.error('Fetch error:', error);
-                alert('Something went wrong!');
+                alert('Something went wrong! Check if you are logged in.');
             }
         });
     }
@@ -39,8 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
         copyBtn.addEventListener('click', () => {
             shortenedUrl.select();
             document.execCommand('copy');
+            const originalText = copyBtn.textContent;
             copyBtn.textContent = 'Copied!';
-            setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+            copyBtn.style.background = '#059669';
+            setTimeout(() => { 
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = '';
+            }, 2000);
         });
     }
 });

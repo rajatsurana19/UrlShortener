@@ -16,14 +16,24 @@ public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "dashboard";
+    }
+
     @GetMapping("/login")
     public String login() {
-        return "login.html";
+        return "login";
     }
 
     @GetMapping("/register")
     public String register() {
-        return "register.html";
+        return "register";
     }
 
     @PostMapping("/register")

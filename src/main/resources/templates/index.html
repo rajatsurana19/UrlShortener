@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US | Premium URL Shortener</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-u">U</span><span class="logo-s">S</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="/login" class="login-btn">Login</a>
+                <a href="/register" class="signup-btn">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Build your brand with <br><span class="logo-u">Short</span> <span class="logo-s">Links</span>.</h1>
+            <p>Every link is a door. Create premium, trackable, and professional short URLs that your users will trust.</p>
+            
+            <div class="shorten-box">
+                <input type="text" id="urlInput" placeholder="https://your-long-url.com/something-very-long" autocomplete="off">
+                <button id="shortenBtn">Quick Shorten</button>
+            </div>
+            
+            <div id="resultBox" class="result-box hidden">
+                <p>Your short link is ready!</p>
+                <div class="result-inner">
+                    <input type="text" id="shortenedUrl" readonly>
+                    <button id="copyBtn">Copy Link</button>
+                </div>
+                <a id="insightsLink" href="#" class="insights-btn">
+                    <svg style="margin-right:8px" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    View detailed insights
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <h3>Enterprise Power</h3>
+                <p>Experience lightning-fast redirection with our global infrastructure designed for zero-latency performance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg>
+                </div>
+                <h3>Secure by Design</h3>
+                <p>Advanced identifier sets and full user isolation mean your links are never guessed and always protected.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20v-6M6 20V10M18 20V4M3 20h18"/></svg>
+                </div>
+                <h3>Real-time Insights</h3>
+                <p>Get instant feedback on your links. Track click counts, referrers, and audience engagement at a glance.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 URLShortener. Built for creators.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
