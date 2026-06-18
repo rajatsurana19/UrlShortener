@@ -22,11 +22,15 @@
 
     <main class="insights-container">
         <div class="container">
-            <h1>Link Analytics</h1>
+            <div class="insights-header">
+                <h1>Link Analytics</h1>
+                <p>Detailed performance data for your shortened URL.</p>
+            </div>
+            
             <div class="insight-card">
                 <div class="stat">
                     <label>Short Code</label>
-                    <h2 id="displayShortCode">...</h2>
+                    <h2 id="displayShortCode">---</h2>
                 </div>
                 <hr>
                 <div class="stat">
@@ -35,16 +39,17 @@
                 </div>
                 <hr>
                 <div class="stat">
-                    <label>Original URL</label>
-                    <p id="displayOriginalUrl">...</p>
+                    <label>Original Destination</label>
+                    <p id="displayOriginalUrl">---</p>
                 </div>
                 <hr>
                 <div class="stat">
                     <label>Created On</label>
-                    <p id="displayCreatedAt">...</p>
+                    <p id="displayCreatedAt" style="font-weight: 600; color: var(--text-muted);">---</p>
                 </div>
             </div>
-            <a href="/" class="back-btn">← Shorten another link</a>
+            
+            <a href="/dashboard" class="back-btn">← Back to Dashboard</a>
         </div>
     </main>
 

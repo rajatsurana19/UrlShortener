@@ -24,8 +24,19 @@
     <main class="dashboard-main">
         <div class="container">
             <div class="dashboard-header">
-                <h1>My Shortened Links</h1>
-                <p>Manage and track all your active URLs.</p>
+                <h1>My Dashboard</h1>
+                <p>Manage your shortened links and track their performance.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <label>Total Links</label>
+                    <div class="value" id="totalLinks">0</div>
+                </div>
+                <div class="stat-card">
+                    <label>Total Clicks</label>
+                    <div class="value" id="totalClicks">0</div>
+                </div>
             </div>
 
             <div class="table-container">
@@ -40,9 +51,10 @@
                         </tr>
                     </thead>
                     <tbody id="linksBody">
-                        <!-- Links will be loaded here -->
                         <tr>
-                            <td colspan="5" style="text-align:center;">Loading your links...</td>
+                            <td colspan="5" style="text-align:center; padding: 3rem; color: var(--text-muted);">
+                                Loading your premium links...
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -66,24 +78,34 @@
                 if (response.ok) {
                     const links = await response.json();
                     const body = document.getElementById('linksBody');
+                    const totalLinksEl = document.getElementById('totalLinks');
+                    const totalClicksEl = document.getElementById('totalClicks');
+                    
                     body.innerHTML = '';
                     
                     if (links.length === 0) {
-                        body.innerHTML = '<tr><td colspan="5" style="text-align:center;">No links created yet.</td></tr>';
+                        body.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 3rem; color: var(--text-muted);">No links created yet. Start shortening!</td></tr>';
+                        totalLinksEl.innerText = '0';
+                        totalClicksEl.innerText = '0';
                         return;
                     }
 
+                    let totalClicks = 0;
                     links.forEach(link => {
+                        totalClicks += link.clickCount;
                         const row = document.createElement('tr');
                         row.innerHTML = `
                             <td><a href="/${link.shortCode}" target="_blank" class="code-link">${link.shortCode}</a></td>
-                            <td class="trunc-url">${link.mainUrl}</td>
+                            <td class="trunc-url" title="${link.mainUrl}">${link.mainUrl}</td>
                             <td><span class="click-badge">${link.clickCount}</span></td>
                             <td>${new Date(link.createdAt).toLocaleDateString()}</td>
                             <td><a href="/insights?code=${link.shortCode}" class="view-btn">View Stats</a></td>
                         `;
                         body.appendChild(row);
                     });
+
+                    totalLinksEl.innerText = links.length;
+                    totalClicksEl.innerText = totalClicks;
                 }
             } catch (error) {
                 console.error('Error fetching links:', error);

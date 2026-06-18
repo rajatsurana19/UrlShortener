@@ -343,3 +343,187 @@ body {
     font-size: 0.9rem;
     border-top: 1px solid #f1f5f9;
 }
+
+/* Dashboard & Insights Premium Updates */
+.dashboard-main, .insights-container {
+    padding: 6rem 0;
+    background: var(--hero-gradient);
+    min-height: calc(100vh - 160px);
+}
+
+.dashboard-header, .insights-header {
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.dashboard-header h1, .insights-header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 24px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid #f1f5f9;
+}
+
+.stat-card label {
+    display: block;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card .value {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-dark);
+}
+
+/* Table Refinement */
+.table-container {
+    background: white;
+    border-radius: 24px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    border: 1px solid #f1f5f9;
+}
+
+.links-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.links-table th {
+    background: #f8fafc;
+    padding: 1.25rem 2rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.links-table td {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+.links-table tr:last-child td {
+    border-bottom: none;
+}
+
+.code-link {
+    font-family: monospace;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-decoration: none;
+    background: #eff6ff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.trunc-url {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-muted);
+}
+
+.click-badge {
+    background: var(--pastel-green);
+    color: var(--accent-green);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+.view-btn {
+    display: inline-flex;
+    align-items: center;
+    background: var(--text-dark);
+    color: white !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.view-btn:hover {
+    background: #000;
+    transform: translateY(-1px);
+}
+
+/* Insights Card Overhaul */
+.insight-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 32px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid #f1f5f9;
+    max-width: 800px;
+}
+
+.insight-card label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.insight-card h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-dark);
+}
+
+.insight-card h2.highlight {
+    color: var(--accent-green);
+}
+
+.insight-card p {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    word-break: break-all;
+}
+
+.insight-card hr {
+    border: none;
+    border-top: 1px solid #f1f5f9;
+    margin: 2rem 0;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.back-btn:hover {
+    color: var(--text-dark);
+}
