@@ -17,8 +17,16 @@ public class UrlEntity {
     @Column
     private String mainUrl;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String shortCode;
 
+    @Column(nullable = false)
+    private java.time.LocalDateTime createdAt;
 
+    @Column(nullable = false)
+    private Long clickCount = 0L;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 }

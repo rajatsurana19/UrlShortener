@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Insights | UrlShortener</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-u">U</span><span class="logo-s">S</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="insights-container">
+        <div class="container">
+            <h1>Link Analytics</h1>
+            <div class="insight-card">
+                <div class="stat">
+                    <label>Short Code</label>
+                    <h2 id="displayShortCode">...</h2>
+                </div>
+                <hr>
+                <div class="stat">
+                    <label>Total Clicks</label>
+                    <h2 id="displayClicks" class="highlight">0</h2>
+                </div>
+                <hr>
+                <div class="stat">
+                    <label>Original URL</label>
+                    <p id="displayOriginalUrl">...</p>
+                </div>
+                <hr>
+                <div class="stat">
+                    <label>Created On</label>
+                    <p id="displayCreatedAt">...</p>
+                </div>
+            </div>
+            <a href="/" class="back-btn">← Shorten another link</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 UrlShortener. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Specific logic for insights page
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+            if (code) {
+                fetchInsights(code);
+            }
+        });
+    </script>
+</body>
+</html>

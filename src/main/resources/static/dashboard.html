@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard | UrlShortener</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-u">U</span><span class="logo-s">S</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Shorten</a>
+                <a href="/logout" class="login-btn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>My Shortened Links</h1>
+                <p>Manage and track all your active URLs.</p>
+            </div>
+
+            <div class="table-container">
+                <table class="links-table">
+                    <thead>
+                        <tr>
+                            <th>Short Code</th>
+                            <th>Original URL</th>
+                            <th>Clicks</th>
+                            <th>Date Created</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="linksBody">
+                        <!-- Links will be loaded here -->
+                        <tr>
+                            <td colspan="5" style="text-align:center;">Loading your links...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 UrlShortener. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', fetchUserLinks);
+
+        async function fetchUserLinks() {
+            try {
+                const response = await fetch('/api/user/links');
+                if (response.ok) {
+                    const links = await response.json();
+                    const body = document.getElementById('linksBody');
+                    body.innerHTML = '';
+                    
+                    if (links.length === 0) {
+                        body.innerHTML = '<tr><td colspan="5" style="text-align:center;">No links created yet.</td></tr>';
+                        return;
+                    }
+
+                    links.forEach(link => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td><a href="/${link.shortCode}" target="_blank" class="code-link">${link.shortCode}</a></td>
+                            <td class="trunc-url">${link.mainUrl}</td>
+                            <td><span class="click-badge">${link.clickCount}</span></td>
+                            <td>${new Date(link.createdAt).toLocaleDateString()}</td>
+                            <td><a href="/insights.html?code=${link.shortCode}" class="view-btn">View Stats</a></td>
+                        `;
+                        body.appendChild(row);
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching links:', error);
+            }
+        }
+    </script>
+</body>
+</html>
