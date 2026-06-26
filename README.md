@@ -60,4 +60,5 @@ Made by **Rajat Surana**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-rajat--surana-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/rajat-surana)
 [![GitHub](https://img.shields.io/badge/GitHub-rajatsurana19-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/rajatsurana19)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-0A66C2?style=for-the-badge&logo=vercel&logoColor=white)](https://rajatsurana.vercel.app)
 
